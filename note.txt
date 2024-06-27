@@ -1,0 +1,8 @@
+git add .
+git status
+git commit  -m "5/23  defeated by bugs but this is a better version "
+git push
+=======
+git config --global user.email "212410012@o365.tku.edu.tw"
+git config --global user.name "jimmyhua123"
+
