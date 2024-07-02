@@ -1,0 +1,55 @@
+#define	candidate{A ,B, C}  Voters = 3
+
+rank[]=vote()
+
+preference[]=record_preferences()
+
+pairs[]=add_pairs()
+
+
+Voter1 =    R1 =A	rank[]=0 1 2
+	        R2 =B 	preference = [0][1]+1  [0][2]+1 [1][2]+1
+	        R3 =C
+
+Voter2 =    R1 =B	rank[]=1 2 0
+	        R2 =C 	preference = [1][2]+1  [1][0]+1 [2][0]+1
+	        R3 =A
+
+Voter3 =    R1 =C	rank[]=2 0 1
+       	    R2 =A	preference = [2][0]+1  [2][1]+1 [0][1]+1
+	        R3 =B
+
+preferences = [ //[↓][→]
+  [0, 2, 1],
+  [1, 0, 2],
+  [2, 1, 0]
+]
+
+pairs[]->{{0,1},{1,2},{2,1}}
+sort_pairs()
+pairs[]->{{0,1},{1,2},{2,1}}
+
+locked = {
+  [false, false, false], // A>B
+  [false, false, false], // B>C
+  [false, false, false]  // C>A
+}
+
+locked()
+    Before locking the pair, check if adding this pair would create a cycle using the check_cycle function.
+    If adding the pair does not create a cycle, lock the pair by setting locked[winner][loser] to true.
+
+check_cycle()
+    Base Case: If the loser is the same as the winner, it means there is a cycle, so return true.
+    Recursively check all the successors of the loser. If any of these paths leads back to the winner, a cycle is detected, and true is returned.
+    If no path from the loser leads back to the winner, return false.
+
+locked = {
+  [false, true, false], // A>B
+  [false, false, true], // B>C
+  [false, false, false]  // C>A
+}
+
+print_winner()
+    Check all other candidates to see if there is any locked pair pointing to the current candidate.
+    If no locked pair points to the current candidate, they are the source, and thus the winner. Print their name and return.

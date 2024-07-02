@@ -1,0 +1,34 @@
+sort1 uses: Bubble sort
+
+How do you know?: Because it is the faster then sort3 in sorted.txt
+time ./sort1 random50000.txt
+real 0m5.524s
+user 0m5.081s
+sys  0m0.224s
+
+time ./sort1 sorted50000.txt
+real 0m0.460s
+user 0m0.024s
+sys  0m0.246s
+
+
+sort2 uses: Merge sort
+
+How do you know?: Because it is the fastest in random.txt
+time ./sort2 random50000.txt
+real 0m0.403s
+user 0m0.046s
+sys  0m0.221s
+
+sort3 uses: Selection sort
+
+How do you know?: Because it is the slowest in random.txt and sorted.txt
+time ./sort3 random50000.txt
+real 0m2.430s
+user 0m1.871s
+sys  0m0.285s
+
+time ./sort3 sorted50000.txt
+real 0m2.313s
+user 0m1.846s
+sys  0m0.278s
